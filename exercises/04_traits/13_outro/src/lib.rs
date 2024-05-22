@@ -29,13 +29,13 @@ impl PartialEq<u16> for SaturatingU16 {
 
 impl From<u16> for SaturatingU16 {
     fn from(value: u16) -> Self {
-        SaturatingU16 { value }
+        Self { value }
     }
 }
 
 impl From<u8> for SaturatingU16 {
     fn from(value: u8) -> Self {
-        SaturatingU16 {
+        Self {
             value: value.into(),
         }
     }
@@ -43,13 +43,13 @@ impl From<u8> for SaturatingU16 {
 
 impl From<&u16> for SaturatingU16 {
     fn from(value: &u16) -> Self {
-        SaturatingU16 { value: *value }
+        Self { value: *value }
     }
 }
 
 impl From<&u8> for SaturatingU16 {
     fn from(value: &u8) -> Self {
-        SaturatingU16 {
+        Self {
             value: (*value).into(),
         }
     }
