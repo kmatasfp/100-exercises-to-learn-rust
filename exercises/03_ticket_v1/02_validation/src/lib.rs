@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 struct Ticket {
     title: String,
     description: String,
@@ -17,7 +19,28 @@ impl Ticket {
     // as well as some `String` methods. Use the documentation of Rust's standard library
     // to find the most appropriate options -> https://doc.rust-lang.org/std/string/struct.String.html
     fn new(title: String, description: String, status: String) -> Self {
-        todo!();
+        let allowed_statuses = HashSet::from(["To-Do", "In Progress", "Done"]);
+
+        if title.is_empty() {
+            panic!("Title cannot be empty")
+        }
+
+        if description.is_empty() {
+            panic!("Description cannot be empty")
+        }
+
+        if title.chars().count() > 50 {
+            panic!("Title cannot be longer than 50 characters")
+        }
+
+        if description.chars().count() > 500 {
+            panic!("Description cannot be longer than 500 characters")
+        }
+
+        if !allowed_statuses.contains(status.as_str()) {
+            panic!("Only `To-Do`, `In Progress`, and `Done` statuses are allowed")
+        }
+
         Self {
             title,
             description,
