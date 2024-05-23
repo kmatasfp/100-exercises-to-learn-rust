@@ -10,15 +10,9 @@ use std::ops::Add;
 //   It should be possible to print its debug representation.
 //
 // Tests are located in the `tests` folder—pay attention to the visibility of your types and methods.
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq)]
 pub struct SaturatingU16 {
     value: u16,
-}
-
-impl PartialEq<SaturatingU16> for SaturatingU16 {
-    fn eq(&self, other: &SaturatingU16) -> bool {
-        self.value == other.value
-    }
 }
 
 impl PartialEq<u16> for SaturatingU16 {
