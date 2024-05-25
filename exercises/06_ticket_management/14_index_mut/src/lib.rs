@@ -75,6 +75,12 @@ impl Index<&TicketId> for TicketStore {
     }
 }
 
+impl IndexMut<TicketId> for TicketStore {
+    fn index_mut(&mut self, index: TicketId) -> &mut Self::Output {
+        self.tickets.iter_mut().find(|t| t.id == index).unwrap()
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use crate::{Status, TicketDraft, TicketStore};
